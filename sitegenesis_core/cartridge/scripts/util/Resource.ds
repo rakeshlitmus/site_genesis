@@ -185,6 +185,7 @@ ResourceHelper.getUrls = function(pageContext) {
         resetPaymentForms           : URLUtils.url('COBilling-ResetPaymentForms').toString(),
         compareShow                 : URLUtils.url('Compare-Show').toString(),
         compareAdd                  : URLUtils.url('Compare-AddProduct').toString(),
+        mailCheck                   : URLUtils.url('Email-SaveMail').toString(),
         compareRemove               : URLUtils.url('Compare-RemoveProduct').toString(),
         compareEmptyImage           : URLUtils.staticURL('/images/comparewidgetempty.png').toString(),
         giftCardCheckBalance        : URLUtils.https('COBilling-GetGiftCertificateBalance').toString(),

@@ -285,6 +285,27 @@ var app = {
             pages[ns].init();
         }
 
+    $('#email-alert-signup').on('submit', function () {
+      var value = $('#email-alert-address').val();
+      if (value === '') {
+        alert('Enter your email');
+      } else {
+        alert(value+'!!!!!');
+        var urls = util.appendParamToURL(Urls.mailCheck, 'source', value);
+      $.ajax({
+        url: urls
+      }).done(function (response) {
+        if(response.status ==='success'){
+        alert('Value is present');}
+        else{
+          alert('Value is not present');
+        }
+      }).fail(function () {
+        alert('Error!!!!');
+      });
+      }
+    });
+
         // Check TLS status if indicated by site preference
         if (SitePreferences.CHECK_TLS === true) {
             tls.getUserAgent();
@@ -777,7 +798,7 @@ function removeFromList($item) {
 
 function addProductAjax(args) {
     var promise = new TPromise(function (resolve, reject) {
-        $.ajax({
+        $.ajax({  
             url: Urls.compareAdd,
             data: {
                 pid: args.itemid,
@@ -945,6 +966,8 @@ function initializeEvents() {
             removeItem($(this));
         });
     });
+
+    
 }
 
 exports.init = function () {
@@ -1414,6 +1437,13 @@ var login = {
                 $('#rememberme').val('false');
             }
         });
+
+         // Button for custom function
+     $(document).on('click', '#custom-items-button', function(e){
+      e.preventDefault();
+      // alert("Checking functions");
+      // page.redirect(util.appendParamToURL(Urls.compareShow, 'category', _currentCategory));
+    });
         
         $('#password-reset').on('click', function (e) {
             e.preventDefault();
