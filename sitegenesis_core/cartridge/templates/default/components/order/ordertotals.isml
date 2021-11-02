@@ -77,11 +77,16 @@
 							<isprint value="${Shipment.shippingMethod.displayName}"/>
 						</isif>
 					</td>
+					
 					<td>
-						<isif condition="${LineItemCtnr.shippingTotalPrice.available}">
-							<isprint value="${LineItemCtnr.shippingTotalPrice}"/>
+					       <isscript>
+							  var promo = require('~/cartridge/scripts/Promo.ds').promotions();
+							</isscript>
+						<isif condition="${promo==true && LineItemCtnr.getShippingTotalNetPrice().toString() =='N/A'}">
+						<isprint value="${session.getCurrency().symbol}" />
+							${Resource.msg('FREE','locale',null)}
 						<iselse/>
-							${Resource.msg('global.symbol.dash','locale',null)}
+						<isprint value="${LineItemCtnr.shippingTotalPrice}"/>
 						</isif>
 					</td>
 				</tr>

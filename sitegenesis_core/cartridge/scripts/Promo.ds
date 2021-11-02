@@ -1,0 +1,16 @@
+var PromotionMgr = require('dw/campaign/PromotionMgr');
+function promotions(){
+    var promos = PromotionMgr.getPromotions();
+    var flag= false;
+
+    var promoIter = promos.iterator();
+    while (promoIter.hasNext()) {
+     promoItem = promoIter.next();
+      if(promoItem.promotionClass == 'SHIPPING' ){
+        flag = true;
+        return flag;
+      }
+    }
+}
+
+ exports.promotions = promotions;
